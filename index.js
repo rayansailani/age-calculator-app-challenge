@@ -7,9 +7,9 @@ let resultYears;
 let errorDay = document.getElementById("error-day");
 let errorMonth = document.getElementById("error-month");
 let errorYear = document.getElementById("error-year");
-let dayElementResult = document.getElementById("result-year").innerHTML;
-let monthElementResult = document.getElementById("result-month").innerHTML;
-let yearElementResult = document.getElementById("result-day").innerHTML;
+let dayElementResult = document.getElementById("result-year");
+let monthElementResult = document.getElementById("result-month");
+let yearElementResult = document.getElementById("result-day");
 let monthInputContainer = document.getElementsByClassName("month")[0];
 let yearInputContainer = document.getElementsByClassName("year")[0];
 let dayInputContainer = document.getElementsByClassName("day")[0];
@@ -30,13 +30,13 @@ let calculateDuration = () => {
       );
       resultYears = Math.floor(duration / millisecondsInYear);
 
-      dayElementResult = resultYears + " ";
-      monthElementResult = resultMonths + " ";
-      yearElementResult = resultDays + " ";
+      dayElementResult.innerHTML = resultYears;
+      monthElementResult.innerHTML = resultMonths;
+      yearElementResult.innerHTML = resultDays;
     } else {
-      dayElementResult = "- -";
-      monthElementResult = "- -";
-      yearElementResult = "- -";
+      dayElementResult.innerHTML = "- -";
+      monthElementResult.innerHTML = "- -";
+      yearElementResult.innerHTML = "- -";
 
       errorDay.innerHTML = "Must be a valid date";
       errorMonth.innerHTML = "";
@@ -86,6 +86,7 @@ function isMonthValid(month) {
   if (monthInt > 12 || monthInt < 1) {
     return false;
   }
+  return true;
 }
 
 function displayMonthError(month) {
